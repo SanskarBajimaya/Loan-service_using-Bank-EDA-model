@@ -23,7 +23,7 @@ except Exception as e:
 def health():
     return {"status": "ok"}
 
-@app.post(/predict, response_model=PredictRequest)
+@app.post("/predict", response_model=PredictRequest)
 def predict(req: PredictRequest):
     # Build 1-row DataFrame in the exact training column order
     feats = req.features

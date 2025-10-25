@@ -1,0 +1,18 @@
+{
+  "features": {
+    "Income": 120.0,
+    "CCAvg": 2.5,
+    "Experience": 8.0,
+    "Mortgage": 0.0,
+    "Education_Graduate": 1,
+    "Education_Undergrad": 0,
+    "Education_Advanced/Professional": 0,
+    "Family_1": 0,
+    "Family_2": 1,
+    "Family_3": 0,
+    "CreditCard_Yes": 1,
+    "CreditCard_No": 0,
+    "Online_Yes": 1,
+    "Online_No": 0
+  }
+}

@@ -22,5 +22,14 @@
     "Family_4",
     "CD Account_1"
   ],
-  "notes": "Model trained on preprocessed numeric data (manual dummies & encodings)."
+  "notes":[ 
+    "Model trained on preprocessed numeric data (manual dummies & encodings).",
+    "Under Graduate = Education_2 (0) & Education_3 (0)",
+    "Graduate = Education_2 (1) & Education_3 (0)",
+    "Advance = Education_2 (0) & Education_3 (1)",
+    "Single = Family_2 (0) & Family_3 (0) & Family_4 (0)",
+    "Couple = Family_2 (1) & Family_3 (0) & Family_4 (0)",
+    "Small Family = Family_2 (0) & Family_3 (1) & Family_4 (0)",
+    "Large Family = Family_2 (0) & Family_3 (0) & Family_4 (1)"
+]
 }

@@ -2,7 +2,7 @@ import json
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
-from app.schemas import PredictRequest, PredictResponse
+from schemas import PredictRequest, PredictResponse
 
 #Loading the artifacts 
 Model_path = "model/loan_xgb.joblib"
@@ -23,7 +23,7 @@ except Exception as e:
 def health():
     return {"status": "ok"}
 
-@app.post("/predict", response_model=PredictRequest)
+@app.post("/predict", response_model=PredictResponse)
 def predict(req: PredictRequest):
     # Build 1-row DataFrame in the exact training column order
     feats = req.features
@@ -44,7 +44,7 @@ def predict(req: PredictRequest):
     p = proba
     t = thresholds
     return PredictResponse(
-        probability=proba
+        probability=proba,
         decision_standard=int(p >= t["standard"]),
         decision_high_recall=int(p >= t["high_recall"]),
         decision_vip_promo=int(p >= t["vip_promo"]),

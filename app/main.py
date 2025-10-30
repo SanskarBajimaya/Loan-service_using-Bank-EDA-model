@@ -2,7 +2,7 @@ import json
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
-from schemas import PredictRequest, PredictResponse
+from app.schemas import PredictRequest, PredictResponse
 
 #Loading the artifacts 
 Model_path = "model/loan_xgb.joblib"
@@ -31,6 +31,7 @@ def predict(req: PredictRequest):
         missing = [c for c in train_features if c not in feats]
         if missing:
             raise HTTPException(400, f"Missing features: {missing[:10]} (and possibly more)")
+        X = pd.DataFrame([[feats[c] for c in train_features]], columns=train_features)
     else:
         X = pd.DataFrame([feats])
 

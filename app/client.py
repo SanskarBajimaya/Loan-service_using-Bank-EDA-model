@@ -1,5 +1,7 @@
 import json
 import requests
+import send_email
+
 
 # The server endpoints (local)
 url = "http://localhost:8000/predict"
@@ -87,13 +89,24 @@ def tier_from_response(probability, thresholds, d_std, d_hr, d_vip):
 
     if d_vip:
         print(f"✅ VIP Promo: p ≥ {thresholds.get('vip_promo', 0.8)}")
-    elif d_hr:
-        print(f"✅ High Recall: p ≥ {thresholds.get('high_recall', 0.3)}")
     elif d_std:
         print(f"✅ Standard: p ≥ {thresholds.get('standard', 0.5)}")
+    elif d_hr:
+        print(f"✅ High Recall: p ≥ {thresholds.get('high_recall', 0.3)}")
     else:
         print("⚠️ No offer: below all thresholds")
 
+
+def tier_for_email(d_std, d_hr, d_vip):
+    # Choose the highest tier satisfied
+    if d_vip:
+        send_email.sendEmail("vip_promo")
+    elif d_std:
+        send_email.sendEmail("standard")
+    elif d_hr:
+        send_email.sendEmail("high_recall")
+    else:
+        print("⚠️ No offer: below all thresholds")
 
 
 
@@ -117,8 +130,14 @@ if response.status_code == 200:
     print("VIP Promo Decision:", result["decision_vip_promo"])
     print("Thresholds Used:", result["thresholds"])
     tier_from_response(result["probability"],result["thresholds"],result["decision_standard"],result["decision_high_recall"],result["decision_vip_promo"])
+    tier_for_email(result["decision_standard"],result["decision_high_recall"],result["decision_vip_promo"])
 else:
     print("Error:", response.status_code, response.text)
+
+
+
+
+
 
 
 

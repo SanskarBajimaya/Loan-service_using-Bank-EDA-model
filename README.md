@@ -209,13 +209,6 @@ print(sg.send(msg).status_code)  # should print 202
 pip install -r requirements.txt
 ```
 
-## 🛠️ Future Improvements
-
-- [ ] Deploy via Docker + Gunicorn
-- [ ] Add SHAP waterfall visualization in the API response
-- [ ] Integrate SendGrid Dynamic Templates instead of static HTML
-- [ ] Add unit tests and CI workflow
-- [ ] Optional SMTP fallback for offline testing
 
 ## 💡 System Architecture
 
@@ -248,6 +241,7 @@ Fairleigh Dickinson University – Vancouver
 
 📧 [sanskarbajimaya12@gmail.com](mailto:sanskarbajimaya12@gmail.com)  
 🔗 [GitHub](https://github.com/SanskarBajimaya)  
+🔗 [Portfolio](https://sanskar-bajimaya.online/) 
 🔗 [LinkedIn](https://www.linkedin.com/in/sanskar-bajimaya)
 
 ---
@@ -263,3 +257,4 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## ⭐ Show your support
 
 Give a ⭐️ if this project helped you!
+
